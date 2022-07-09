@@ -10,6 +10,7 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -35,7 +36,7 @@ public class ContactRestController {
         if (null != contact && null != contact.getStatus()) {
             return contactRepository.findByStatus(contact.getStatus());
         } else {
-            return List.of();
+            return Collections.emptyList();
         }
     }
 
