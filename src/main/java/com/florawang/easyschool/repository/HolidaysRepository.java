@@ -12,5 +12,4 @@ DB related operations and
 @Repository
 public interface HolidaysRepository extends CrudRepository<Holiday, String> {
 
-
 }

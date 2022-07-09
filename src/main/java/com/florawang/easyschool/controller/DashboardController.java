@@ -14,13 +14,14 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 @Controller
 public class DashboardController {
+
     @Autowired
     PersonRepository personRepository;
 
     @RequestMapping("/dashboard")
     public String displayDashboard(Model model, Authentication authentication, HttpSession session) {
         Person person = personRepository.readByEmail(authentication.getName());
-        model.addAttribute("username", authentication.getName());
+        model.addAttribute("username", person.getName());
         model.addAttribute("roles", authentication.getAuthorities().toString());
         if (null != person.getEasyClass() && null != person.getEasyClass().getName()) {
             model.addAttribute("enrolledClass", person.getEasyClass().getName());

@@ -108,7 +108,7 @@ public class AdminController {
 
     @GetMapping("/displayCourses")
     public ModelAndView displayCourses(Model model) {
-//        List<Courses> courses = coursesRepository.findByOrderByName();
+        //List<Courses> courses = coursesRepository.findByOrderByNameDesc();
         List<Courses> courses = coursesRepository.findAll(Sort.by("name").descending());
         ModelAndView modelAndView = new ModelAndView("courses_secure.html");
         modelAndView.addObject("courses", courses);
@@ -172,4 +172,5 @@ public class AdminController {
                 ModelAndView("redirect:/admin/viewStudents?id=" + courses.getCourseId());
         return modelAndView;
     }
+
 }

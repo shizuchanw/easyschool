@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("student")
 public class StudentController {
-    
 
     @GetMapping("/displayCourses")
     public ModelAndView displayCourses(Model model, HttpSession session) {
