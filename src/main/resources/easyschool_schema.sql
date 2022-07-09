@@ -2,6 +2,9 @@ create database easyschool;
 
 use easyschool;
 
+
+SET SQL_MODE='ALLOW_INVALID_DATES';
+
 create TABLE IF NOT EXISTS `contact_msg` (
   `contact_id` int AUTO_INCREMENT  PRIMARY KEY,
   `name` varchar(100) NOT NULL,
@@ -12,7 +15,7 @@ create TABLE IF NOT EXISTS `contact_msg` (
   `status` varchar(10) NOT NULL,
   `created_at` TIMESTAMP NOT NULL,
   `created_by` varchar(50) NOT NULL,
-  `updated_at` TIMESTAMP DEFAULT NULL,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
   `updated_by` varchar(50) DEFAULT NULL
 );
 
@@ -22,7 +25,7 @@ create TABLE IF NOT EXISTS `holidays` (
   `type` varchar(20) NOT NULL,
   `created_at` TIMESTAMP NOT NULL,
   `created_by` varchar(50) NOT NULL,
-  `updated_at` TIMESTAMP DEFAULT NULL,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
   `updated_by` varchar(50) DEFAULT NULL
 );
 
@@ -31,7 +34,7 @@ create TABLE IF NOT EXISTS `roles` (
   `role_name` varchar(50) NOT NULL,
   `created_at` TIMESTAMP NOT NULL,
   `created_by` varchar(50) NOT NULL,
-  `updated_at` TIMESTAMP DEFAULT NULL,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
   `updated_by` varchar(50) DEFAULT NULL,
    PRIMARY KEY (`role_id`)
 );
@@ -45,7 +48,7 @@ create TABLE IF NOT EXISTS `address` (
   `zip_code` int NOT NULL,
   `created_at` TIMESTAMP NOT NULL,
   `created_by` varchar(50) NOT NULL,
-  `updated_at` TIMESTAMP DEFAULT NULL,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
   `updated_by` varchar(50) DEFAULT NULL,
    PRIMARY KEY (`address_id`)
 );
@@ -60,7 +63,7 @@ create TABLE IF NOT EXISTS `person` (
   `address_id` int NULL,
   `created_at` TIMESTAMP NOT NULL,
   `created_by` varchar(50) NOT NULL,
-  `updated_at` TIMESTAMP DEFAULT NULL,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
   `updated_by` varchar(50) DEFAULT NULL,
    PRIMARY KEY (`person_id`),
    FOREIGN KEY (role_id) REFERENCES roles(role_id),
@@ -71,7 +74,7 @@ create TABLE IF NOT EXISTS `class` (
   `name` varchar(100) NOT NULL,
   `created_at` TIMESTAMP NOT NULL,
   `created_by` varchar(50) NOT NULL,
-  `updated_at` TIMESTAMP DEFAULT NULL,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
   `updated_by` varchar(50) DEFAULT NULL,
    PRIMARY KEY (`class_id`)
 );
@@ -87,7 +90,7 @@ create TABLE IF NOT EXISTS `courses` (
   `fees` varchar(10) NOT NULL,
   `created_at` TIMESTAMP NOT NULL,
   `created_by` varchar(50) NOT NULL,
-  `updated_at` TIMESTAMP DEFAULT NULL,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
   `updated_by` varchar(50) DEFAULT NULL,
    PRIMARY KEY (`course_id`)
 );
